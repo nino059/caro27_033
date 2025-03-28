@@ -138,5 +138,12 @@ namespace caro27_033.GUI
             lblLevel.Text = "Khó";
             //
         }
+
+        private void bảngĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmScore frmScore = new frmScore();
+            frmScore.StartPosition = FormStartPosition.CenterScreen;
+            frmScore.ShowDialog();
+        }
     }
 }

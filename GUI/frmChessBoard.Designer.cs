@@ -71,11 +71,10 @@ namespace caro27_033.GUI
             lblNameChatbox = new Label();
             lblNameLevel = new Label();
             lblLevel = new Label();
-            dataGridView1 = new DataGridView();
+            bảngĐiểmToolStripMenuItem = new ToolStripMenuItem();
             mnuChessBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbavt1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ptbavt2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // mnuChessBoard
@@ -135,20 +134,20 @@ namespace caro27_033.GUI
             // tsmPause
             // 
             tsmPause.Name = "tsmPause";
-            tsmPause.Size = new Size(196, 34);
+            tsmPause.Size = new Size(270, 34);
             tsmPause.Text = "Tạm dừng";
             tsmPause.Click += tsmPause_Click;
             // 
             // tsmUndo
             // 
             tsmUndo.Name = "tsmUndo";
-            tsmUndo.Size = new Size(196, 34);
+            tsmUndo.Size = new Size(270, 34);
             tsmUndo.Text = "Quay lại";
             // 
             // tsmEndo
             // 
             tsmEndo.Name = "tsmEndo";
-            tsmEndo.Size = new Size(196, 34);
+            tsmEndo.Size = new Size(270, 34);
             tsmEndo.Text = "Chơi lại";
             tsmEndo.Click += tsmEndo_Click;
             // 
@@ -156,7 +155,7 @@ namespace caro27_033.GUI
             // 
             tsmLevel.DropDownItems.AddRange(new ToolStripItem[] { tsmEasyLevel, tsmMediumLevel, tsmHardLevel });
             tsmLevel.Name = "tsmLevel";
-            tsmLevel.Size = new Size(196, 34);
+            tsmLevel.Size = new Size(270, 34);
             tsmLevel.Text = "Mức độ";
             // 
             // tsmEasyLevel
@@ -190,12 +189,12 @@ namespace caro27_033.GUI
             // tsmLAN
             // 
             tsmLAN.Name = "tsmLAN";
-            tsmLAN.Size = new Size(148, 34);
+            tsmLAN.Size = new Size(270, 34);
             tsmLAN.Text = "LAN";
             // 
             // tsmDisplay
             // 
-            tsmDisplay.DropDownItems.AddRange(new ToolStripItem[] { tsmRename, tsmChangeTheme, tsmChatBox });
+            tsmDisplay.DropDownItems.AddRange(new ToolStripItem[] { tsmRename, tsmChangeTheme, tsmChatBox, bảngĐiểmToolStripMenuItem });
             tsmDisplay.Name = "tsmDisplay";
             tsmDisplay.Size = new Size(89, 29);
             tsmDisplay.Text = "Hiển thị";
@@ -204,7 +203,7 @@ namespace caro27_033.GUI
             // 
             tsmRename.DropDownItems.AddRange(new ToolStripItem[] { txtRename });
             tsmRename.Name = "tsmRename";
-            tsmRename.Size = new Size(203, 34);
+            tsmRename.Size = new Size(270, 34);
             tsmRename.Text = "Đổi tên";
             // 
             // txtRename
@@ -219,7 +218,7 @@ namespace caro27_033.GUI
             // 
             tsmChangeTheme.DropDownItems.AddRange(new ToolStripItem[] { thayĐổiToolStripMenuItem });
             tsmChangeTheme.Name = "tsmChangeTheme";
-            tsmChangeTheme.Size = new Size(203, 34);
+            tsmChangeTheme.Size = new Size(270, 34);
             tsmChangeTheme.Text = "Giao diện";
             // 
             // thayĐổiToolStripMenuItem
@@ -232,7 +231,7 @@ namespace caro27_033.GUI
             // 
             tsmChatBox.DropDownItems.AddRange(new ToolStripItem[] { tsmHideShowChatBox });
             tsmChatBox.Name = "tsmChatBox";
-            tsmChatBox.Size = new Size(203, 34);
+            tsmChatBox.Size = new Size(270, 34);
             tsmChatBox.Text = "Khung chat";
             // 
             // tsmHideShowChatBox
@@ -387,14 +386,12 @@ namespace caro27_033.GUI
             lblLevel.TabIndex = 16;
             lblLevel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // dataGridView1
+            // bảngĐiểmToolStripMenuItem
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 375);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(185, 407);
-            dataGridView1.TabIndex = 17;
+            bảngĐiểmToolStripMenuItem.Name = "bảngĐiểmToolStripMenuItem";
+            bảngĐiểmToolStripMenuItem.Size = new Size(270, 34);
+            bảngĐiểmToolStripMenuItem.Text = "Bảng điểm";
+            bảngĐiểmToolStripMenuItem.Click += bảngĐiểmToolStripMenuItem_Click;
             // 
             // frmChessBoard
             // 
@@ -403,7 +400,6 @@ namespace caro27_033.GUI
             BackgroundImage = Properties.Resources.chessBoard;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1178, 794);
-            Controls.Add(dataGridView1);
             Controls.Add(lblLevel);
             Controls.Add(lblNameLevel);
             Controls.Add(lblNameChatbox);
@@ -427,7 +423,6 @@ namespace caro27_033.GUI
             mnuChessBoard.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ptbavt1).EndInit();
             ((System.ComponentModel.ISupportInitialize)ptbavt2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -472,6 +467,6 @@ namespace caro27_033.GUI
         private ToolStripMenuItem tsmOnOffMusic;
         private Label lblNameLevel;
         private Label lblLevel;
-        private DataGridView dataGridView1;
+        private ToolStripMenuItem bảngĐiểmToolStripMenuItem;
     }
 }
