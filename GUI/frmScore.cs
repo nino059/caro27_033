@@ -20,52 +20,6 @@ namespace caro27_033.GUI
         static string connString = @"Data Source=LaptopOfNino;Initial Catalog=Score;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         SqlConnection conn = new SqlConnection(connString);
 
-        private void CustomizeDataGridView()
-        {
-            // Tự động co giãn
-            dtgScoreBoard.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtgScoreBoard.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-
-            // Font chữ
-            dtgScoreBoard.Font = new Font("Segoe UI", 10, FontStyle.Regular);
-            dtgScoreBoard.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-
-            // Header màu xanh, chữ trắng, căn giữa
-            dtgScoreBoard.EnableHeadersVisualStyles = false;
-            dtgScoreBoard.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
-            dtgScoreBoard.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dtgScoreBoard.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            // Màu nền xen kẽ
-            dtgScoreBoard.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-
-            // Căn giữa dữ liệu
-            dtgScoreBoard.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            if (!(dtgScoreBoard.DataSource == null && dtgScoreBoard.Columns["PlayerName"] == null))
-            {
-                //dtgScoreBoard.Columns["PlayerName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            }
-                
-
-            // Viền & Border
-            dtgScoreBoard.BorderStyle = BorderStyle.Fixed3D;
-            dtgScoreBoard.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-
-            // Không cho chỉnh sửa
-            dtgScoreBoard.ReadOnly = true;
-
-            // Chặn chọn nhiều dòng
-            dtgScoreBoard.MultiSelect = false;
-
-            // Ẩn cột ID
-            //dtgScoreBoard.Columns["ID"].Visible = false;
-
-            // Hiệu ứng hover
-            dtgScoreBoard.DefaultCellStyle.SelectionBackColor = Color.DarkBlue;
-            dtgScoreBoard.DefaultCellStyle.SelectionForeColor = Color.White;
-        }
-
-
         private void frmScore_Load(object sender, EventArgs e)
         {
             try
@@ -78,6 +32,13 @@ namespace caro27_033.GUI
                 dt.Load(reader);
                 dtgScoreBoard.DataSource = dt;
 
+                //if (dtgScoreBoard.Columns["Name"] != null)
+                //    dtgScoreBoard.Columns["Name"].HeaderText = "Tên người chơi";
+
+                //if (dtgScoreBoard.Columns["Score"] != null)
+                //    dtgScoreBoard.Columns["Score"].HeaderText = "Điểm số";
+
+
                 if (conn.State == ConnectionState.Open)
                     conn.Close();
             }
@@ -85,9 +46,7 @@ namespace caro27_033.GUI
             {
                 MessageBox.Show(ex.Message, "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            CustomizeDataGridView();
-
         }
+
     }
 }

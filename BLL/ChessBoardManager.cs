@@ -260,23 +260,7 @@ namespace caro27_033.BLL
                 labelName2.BackColor = Color.Green;
         }
 
-        /// <summary>
-        /// Dừng timer khi đóng form hoặc kết thúc trò chơi
-        /// </summary>
-        public void StopGame()
-        {
-            TimerManager.StopTimer();
-        }
 
-        /// <summary>
-        /// Giải phóng tài nguyên khi form đóng
-        /// </summary>
-        public void Dispose()
-        {
-            TimerManager.Dispose();
-            imageX?.Dispose();
-            imageO?.Dispose();
-        }
         #endregion
     }
 }

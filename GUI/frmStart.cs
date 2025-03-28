@@ -71,5 +71,12 @@ namespace caro27_033.GUI
             frmTheRules.StartPosition = FormStartPosition.CenterScreen;
             frmTheRules.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmScore frmScore = new frmScore();
+            frmScore.StartPosition = FormStartPosition.CenterScreen;
+            frmScore.ShowDialog();
+        }
     }
 }

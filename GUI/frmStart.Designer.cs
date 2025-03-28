@@ -39,6 +39,7 @@ namespace caro27_033.GUI
             lblCaroChill = new Label();
             lbl1Player = new Label();
             lbl2Player = new Label();
+            btnScoreBoard = new Button();
             SuspendLayout();
             // 
             // btnTheRules
@@ -57,9 +58,9 @@ namespace caro27_033.GUI
             // 
             btnQuitGame.BackColor = Color.LightBlue;
             btnQuitGame.Font = new System.Drawing.Font("Showcard Gothic", 12F, FontStyle.Bold | FontStyle.Italic);
-            btnQuitGame.Location = new Point(457, 224);
+            btnQuitGame.Location = new Point(457, 268);
             btnQuitGame.Name = "btnQuitGame";
-            btnQuitGame.Size = new Size(198, 48);
+            btnQuitGame.Size = new Size(198, 52);
             btnQuitGame.TabIndex = 3;
             btnQuitGame.Text = "THOÁT GAME";
             btnQuitGame.UseVisualStyleBackColor = false;
@@ -123,6 +124,18 @@ namespace caro27_033.GUI
             lbl2Player.TabIndex = 6;
             lbl2Player.Text = "2 NGƯỜI CHƠI\r\n";
             // 
+            // btnScoreBoard
+            // 
+            btnScoreBoard.BackColor = Color.LightBlue;
+            btnScoreBoard.Font = new System.Drawing.Font("Showcard Gothic", 12F, FontStyle.Bold | FontStyle.Italic);
+            btnScoreBoard.Location = new Point(457, 205);
+            btnScoreBoard.Name = "btnScoreBoard";
+            btnScoreBoard.Size = new Size(198, 52);
+            btnScoreBoard.TabIndex = 8;
+            btnScoreBoard.Text = "BẢNG ĐIỂM";
+            btnScoreBoard.UseVisualStyleBackColor = false;
+            btnScoreBoard.Click += button2_Click;
+            // 
             // frmStart
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -130,6 +143,7 @@ namespace caro27_033.GUI
             BackgroundImage = Properties.Resources.startGround;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(722, 411);
+            Controls.Add(btnScoreBoard);
             Controls.Add(lbl2Player);
             Controls.Add(lbl1Player);
             Controls.Add(lblCaroChill);
@@ -155,5 +169,6 @@ namespace caro27_033.GUI
         private Label lblCaroChill;
         private Label lbl1Player;
         private Label lbl2Player;
+        private Button btnScoreBoard;
     }
 }
