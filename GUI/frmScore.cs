@@ -48,5 +48,28 @@ namespace caro27_033.GUI
             }
         }
 
+
+        public void LoadScoreData()
+        {
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                    conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Score ORDER BY Score DESC", conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                dtgScoreBoard.DataSource = dt;
+
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

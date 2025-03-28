@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using caro27_033.Entity;
 using caro27_033.GUI;
 using caro27_033.Class;
+using Microsoft.Data.SqlClient;
 
 namespace caro27_033.BLL
 {
@@ -97,8 +98,8 @@ namespace caro27_033.BLL
             imageO = File.Exists(imagePathO) ? Image.FromFile(imagePathO) : new Bitmap(1, 1);
 
             // Khởi tạo người chơi
-            Player.Add(new Player("Player 1", imageX));
-            Player.Add(new Player("Player 2", imageO));
+            Player.Add(new Player(labelName1.Text, imageX));
+            Player.Add(new Player(labelName2.Text, imageO));
                         
             // Khởi tạo timer manager
             TimerManager = new GameTimerManager(progressBar1, progressBar2, OnTimeOut);
@@ -189,6 +190,10 @@ namespace caro27_033.BLL
             if (checkWin.Check(row, col))
             {
                 TimerManager.StopTimer();
+
+                // Cập nhật điểm số vào SQL Server
+                UpdatePlayerScore(Player[currentPlayer].Name);
+
                 DialogResult result = MessageBox.Show("Bạn muốn chơi tiếp?", $"{Player[currentPlayer].Name} đã thắng!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
@@ -200,6 +205,20 @@ namespace caro27_033.BLL
             }
 
 
+            //if (checkWin.Check(row, col))
+            //{
+            //    TimerManager.StopTimer();
+            //    DialogResult result = MessageBox.Show("Bạn muốn chơi tiếp?", $"{Player[currentPlayer].Name} đã thắng!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            //    if (result == DialogResult.Yes)
+            //        ResetChessBoard();
+            //    else
+            //        Application.Exit();
+
+            //    return;
+            //}
+
+
             // Dừng timer hiện tại          
             TimerManager.StopTimer();
 
@@ -208,6 +227,36 @@ namespace caro27_033.BLL
             ChangePlayer();
             TimerManager.StartCountdown(currentPlayer);
         }
+
+        private void UpdatePlayerScore(string playerName)
+        {
+            try
+            {
+                string connString = @"Data Source=LaptopOfNino;Initial Catalog=Score;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                    string query = @"
+                IF EXISTS (SELECT 1 FROM Score WHERE Name = @Name)
+                    UPDATE Score SET Score = Score + 1 WHERE Name = @Name
+                ELSE
+                    INSERT INTO Score (Name, Score) VALUES (@Name, 1)";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Name", playerName);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật điểm số: " + ex.Message);
+            }
+        }
+
+
+
 
         /// <summary>
         /// Xử lý khi hết thời gian
@@ -241,6 +290,10 @@ namespace caro27_033.BLL
             currentPlayer = currentPlayer == 0 ? 1 : 0;
             ChangePlayer();
             TimerManager.StartCountdown(currentPlayer);
+
+            frmScore frm = new frmScore();
+            frm.LoadScoreData();
+
 
         }
 

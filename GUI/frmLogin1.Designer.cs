@@ -41,7 +41,7 @@ namespace caro27_033.GUI
             // btnLogin
             // 
             btnLogin.BackColor = Color.LightBlue;
-            btnLogin.Font = new System.Drawing.Font("Showcard Gothic", 16F, FontStyle.Bold | FontStyle.Italic);
+            btnLogin.Font = new System.Drawing.Font("Showcard Gothic", 16F, FontStyle.Bold);
             btnLogin.Location = new Point(343, 250);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(238, 64);
@@ -53,7 +53,7 @@ namespace caro27_033.GUI
             // btnQuit
             // 
             btnQuit.BackColor = Color.LightBlue;
-            btnQuit.Font = new System.Drawing.Font("Showcard Gothic", 16F, FontStyle.Bold | FontStyle.Italic);
+            btnQuit.Font = new System.Drawing.Font("Showcard Gothic", 16F, FontStyle.Bold);
             btnQuit.Location = new Point(343, 354);
             btnQuit.Name = "btnQuit";
             btnQuit.Size = new Size(238, 64);
@@ -64,7 +64,7 @@ namespace caro27_033.GUI
             // 
             // txtUserName
             // 
-            txtUserName.Font = new System.Drawing.Font("Times New Roman", 18F, FontStyle.Bold);
+            txtUserName.Font = new System.Drawing.Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtUserName.ForeColor = Color.Gray;
             txtUserName.Location = new Point(341, 72);
             txtUserName.Name = "txtUserName";
